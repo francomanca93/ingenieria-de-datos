@@ -21,6 +21,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
 - [Introducción](#Introducción)
     - [Introducción al curso](#Introducción-al-curso)
     - [¿Qué es la Ciencia e Ingeniería de Datos?](#¿Qué-es-la-Ciencia-e-Ingeniería-de-Datos?)
+    - [Roles](#Roles)
 - [Web scraping](#Web-scraping)
 - [Pandas](#Pandas)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
@@ -79,6 +80,20 @@ Herramientas donde se auxilia:
 - Análisis de señales digitales. 
     - Análisis de datos en tiempo real. 
 - Análisis de datos en la nube (Big Data). Data center que podemos utilizar eficientemente para procesar grandes cantidades de datos
+
+### Roles
+
+Existen por lo menos tres diferentes roles para tener un pipeline completo de ciencia de datos. Este curso trata sobre el primer rol:
+
+- **Data engineer**: Se encarga de obtener los datos, Limpiarlos y estructurarlos para posterior análisis, crear pipelines de análisis automatizado, utilización de herramientas en la nube, análisis descriptivo de los datos.
+
+- **Data scientist**: Una vez tiene los datos se encarga de generar el análisis matemático de ellos, encontrar las relaciones entre las variables, las correlaciones, las causas y por último genera los modelos predictivos y prescriptivos.
+
+- **Machine Learning engineer**: Se encarga de llevar las predicciones a escala, de subirlos a la nube y allí generar muchas predicciones. Se encarga de mantener la calidad del modelo.
+
+<div align="center"> 
+  <img src="readme_img/hierarchy.png" width="">
+</div>
 
 ## Web scraping
 ## Pandas
