@@ -25,6 +25,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
     - [Configuración del ambiente](#Configuración-del-ambiente)
     - [Jupyter Notebooks](#Jupyter-Notebooks)
     - [Profundizando en tipos de datos](#Profundizando-en-tipos-de-datos)
+    - [Fuentes de datos](#Fuentes-de-datos)
 - [Web scraping](#Web-scraping)
 - [Pandas](#Pandas)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
@@ -200,6 +201,32 @@ Tenemos otras clasificaciones como los datos estructurados, semi estructurados y
   <img src="readme_img/tipos-datos.jpg" width="80%">
 </div>
 
+### Fuentes de datos
+
+- **Web**
+
+Es una mina enorme con datos financieros, de startups, del clima, precipitación fluvial, astronómicos, de negocios, etc.
+
+
+- **APIs**
+
+Endpoints que viven en la web y nos devuelven JSON. Por ejemplo, la API de twitter, google, facebook.
+
+Todas las [API's de google](https://console.cloud.google.com/apis/library) que este nos ofrece.
+
+- **User Analytics**
+
+Son el comportamiento del usuario dentro de nuestra aplicaciones, algo similar a los que nos ofrece Google Analytics.
+
+- **IoT**
+
+El [IoT o Internet of Things](https://es.wikipedia.org/wiki/Internet_de_las_cosas) Se ha vuelto una mina espectacular en los últimos años. Como automóviles, sensores en edificios y todo aquello que se pueda conectar a internet. 
+
+En los siguientes enlaces podemos encontrar gran cantidad de datset asi como tambien un buscado de estos desarrollado por google.
+
+- [Dataset Search de Google](https://datasetsearch.research.google.com/)
+- [Data Word](https://data.world/)
+- [Kaggle](https://www.kaggle.com/)
 
 ## Web scraping
 ## Pandas
