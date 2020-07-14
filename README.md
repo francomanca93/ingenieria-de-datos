@@ -24,6 +24,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
     - [Roles](#Roles)
     - [Configuración del ambiente](#Configuración-del-ambiente)
     - [Jupyter Notebooks](#Jupyter-Notebooks)
+    - [Profundizando en tipos de datos](#Profundizando-en-tipos-de-datos)
 - [Web scraping](#Web-scraping)
 - [Pandas](#Pandas)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
@@ -173,6 +174,32 @@ Jupyter Notebook tiene diferentes tipos de celdas en las cuales podemos escribir
 - `DD`: Eliminar Celda
 
 Jupyter Notebook tiene dos modalidades, la modalidad de edición y navegación.
+
+### Profundizando en tipos de datos
+
+Los datos vienen en muchas formas y estas formas las podemos clasificar de diferentes maneras, permitiéndonos poder aplicar técnicas distintas a cada uno de los tipos de datos.
+
+- Los primeros datos son los primitivos.
+`int, str, bool, float, hex, oct, datetime, objetos especiales`
+
+Tenemos otras clasificaciones como los datos estructurados, semi estructurados y no estructurados.
+
+- Los **estructurados** son los más fáciles de acceder a su información.
+  - Bases de datos
+  - Data warehouse
+- Los **semis estructurados** donde podemos usar las APIs
+  - json API's
+  - Datos tabulares (csv, excel)
+- Los **No estructurados** son la mayoría de los datos que te vas a encontrar en tu desarrollo profesional.
+  - HTML
+  - Texto libre
+  - Imagenes, audios, videos
+  - Datos científicos
+
+<div align="center"> 
+  <img src="readme_img/tipos-datos.jpg" width="80%">
+</div>
+
 
 ## Web scraping
 ## Pandas
