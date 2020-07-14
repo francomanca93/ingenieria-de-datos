@@ -26,6 +26,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
     - [Jupyter Notebooks](#Jupyter-Notebooks)
     - [Profundizando en tipos de datos](#Profundizando-en-tipos-de-datos)
     - [Fuentes de datos](#Fuentes-de-datos)
+    - [ETL](#ETL)
 - [Web scraping](#Web-scraping)
 - [Pandas](#Pandas)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
@@ -227,6 +228,35 @@ En los siguientes enlaces podemos encontrar gran cantidad de datset asi como tam
 - [Dataset Search de Google](https://datasetsearch.research.google.com/)
 - [Data Word](https://data.world/)
 - [Kaggle](https://www.kaggle.com/)
+
+### ETL
+
+**ETL = Extract Transform Load**
+
+Los procesos ETL son un término estándar que se utiliza para referirse al movimiento y transformación de datos. Se trata del proceso que permite a las organizaciones mover datos desde múltiples fuentes, reformatearlos y cargarlos en otra base de datos (denominada data mart o data warehouse) con el objeto de analizarlos. También pueden ser enviados a otro sistema operacional para apoyar un proceso de negocio.
+
+Si separamos por puntos cada uno haría lo siguiente:
+- **Extract**: Es el proceso de lectura de datos de diversas fuentes
+
+  - Base de datos
+  - CRM
+  - Archivos CSV
+  - Datasets públicos
+
+- **Transform**: En este momento cuando nosotros tenemos que transformar los datos, tenemos que identificar datos faltantes o datos erróneos o una edad negativa. En esta etapa donde tenemos que identificar todos los problemas y solucionarlos.
+
+  - Limpieza
+  - Estructurado
+  - Enriquecimiento.
+
+- **Load**: Una vez transformados debemos insertarlos en el data warehouse
+
+  - Depende del tipo de solución que se haya escogido
+
+<div align="center"> 
+  <img src="readme_img/etl.png" width="">
+</div>
+
 
 ## Web scraping
 ## Pandas
