@@ -23,6 +23,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
     - [¿Qué es la Ciencia e Ingeniería de Datos?](#¿Qué-es-la-Ciencia-e-Ingeniería-de-Datos?)
     - [Roles](#Roles)
     - [Configuración del ambiente](#Configuración-del-ambiente)
+    - [Jupyter Notebooks](#Jupyter-Notebooks)
 - [Web scraping](#Web-scraping)
 - [Pandas](#Pandas)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
@@ -150,6 +151,28 @@ Al instalar las librerias se instalan dependendias para que estas funcionen.
 - Para eliminar nuestro entorno virtual con todos nuestros paquetes
 
 `$ conda remove --name nombre_entorno --all`
+
+### Jupyter Notebooks
+
+Algo interesante que tenemos con Anaconda es que nos trae [Jupyter Notebooks](https://jupyter.org/).
+
+Jupyter Notebooks es un entorno de programación en el cual podemos mezclar ejecución de código en vivo, visualizaciones y añadir markdown.
+
+- Para inicializar nuestro servidor de jupyter:
+
+`$ jupyter notebook`
+
+Jupyter Notebook tiene diferentes tipos de celdas en las cuales podemos escribir código o markdown. Si queremos ejecutar nuestro código hacemos `ctrl + enter` y si queremos ejecutar y añadir una nueva celda `shift + enter`.
+
+- `ESC`: dentro de una celda entrar al modo de navegación. (el borde izquierdo de la celda se resalta en azul)
+- `K`: mover hacia arriba
+- `J`: mover hacia abajo
+- `B`: Agregar nueva celda
+- `M`: Convertir en MarkDown
+- `P`: Acceder a la línea de comando
+- `DD`: Eliminar Celda
+
+Jupyter Notebook tiene dos modalidades, la modalidad de edición y navegación.
 
 ## Web scraping
 ## Pandas
