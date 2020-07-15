@@ -29,6 +29,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
     - [ETL](#ETL)
 - [Web scraping](#Web-scraping)
   - [Introducción a las tecnologías web](#Introducción-a-las-tecnologías-web)
+  - [Realizar solicitudes HTTP con Python](#Realizar-solicitudes-HTTP-con-Python)
 - [Pandas](#Pandas)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
 - [Contenido Bonus](#Contenido-Bonus)
@@ -276,6 +277,31 @@ Elementos básicos de la web:
 - **Javascript**: nos permite añadir interactividad y cómputo a nuestra web.
 - **JSON**: Simplemente es una forma de transmitir datos entre servidores y clientes. Es la forma estándar en las que en la web y las aplicaciones se comunican con los servidores backend.
 
+### Realizar solicitudes HTTP con Python
+
+Para poder experimentar con la web necesitamos un método programático para solicitar URLs y obtener HTML
+
+**Requests**: Nos permite generar solicitudes a la web dentro de Python y utilizar los diferentes verbos HTTP, normalmente utilizaremos el método **GET** porque vamos a traer datos.
+
+`requests.get('url')` para hacer una solicitud a la web y nos devolverá un objeto `response`
+
+Al hacer una solicitud HTTP necesitamos saber en que estado será la misma con `responde.status_code`. Las posibles respuestas son:
+
+- 200 : OK - Petición correcta.
+- 400 : Bad request - Petición incorrecta.
+- 404 : Not found - Recurso no encontrado.
+
+Estos códigos estan categorizados en los siguientes grupos:
+
+- 1xx : Respuestas informativas (Ej: 100, 101, 102, etc.)
+- 2xx : Peticiones correctas (Ej: 200, 201, 202, etc.)
+- 3xx : Redirecciones (Ej: 300, 301, 302, etc.)
+- 4xx : Errores en el lado del cliente (Ej: 400, 401, 402, etc.)
+- 5xx : Errores en el lado del servidor (Ej: 500, 501, 502, etc.)
+
+Todas las solicitudes HTTP tienen metadatos para que los diferentes sistemas y computadoras puedan entender de qué va la solicitud.
+
+[Script de solicitudes a la web]()
 
 ## Pandas
 ## Intro a Sistemas de Datos
