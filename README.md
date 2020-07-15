@@ -28,6 +28,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
     - [Fuentes de datos](#Fuentes-de-datos)
     - [ETL](#ETL)
 - [Web scraping](#Web-scraping)
+  - [Introducción a las tecnologías web](#Introducción-a-las-tecnologías-web)
 - [Pandas](#Pandas)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
 - [Contenido Bonus](#Contenido-Bonus)
@@ -259,6 +260,23 @@ Si separamos por puntos cada uno haría lo siguiente:
 
 
 ## Web scraping
+
+### Introducción a las tecnologías web
+
+Las tecnologías web en principio podemos pensarlas como el internet, pero el internet es mucho más grande, es la red de redes, la forma en la que millones de computadores se conectan entre ellas para transferirse información.
+
+El internet también se compone de otros pedazos (entre parentesis sus protocolos) como telefonía(voip), mail(pop3, imap), compartir archivos(ftp). El internet es una red que une varias redes públicas, privadas, académicas, de negocios, de gobiernos, etc.
+
+La web específicamente es un espacio de información en el cual varios documentos(y otros recursos web) se pueden acceder a través de URLs y vínculos(links). La comunicación se da a través del protocolo **HTTP**.
+
+Elementos básicos de la web:
+
+- **HTML**: nos da la estructura de la información. Es un lenguaje para anotar pedazos de información para que el navegador o otros tipos de programa puedan interpretar que tipo de información se encuentra ahí.
+- **CSS**: nos permite darle colores, arreglar el texto y añadir diferentes elementos de presentación.
+- **Javascript**: nos permite añadir interactividad y cómputo a nuestra web.
+- **JSON**: Simplemente es una forma de transmitir datos entre servidores y clientes. Es la forma estándar en las que en la web y las aplicaciones se comunican con los servidores backend.
+
+
 ## Pandas
 ## Intro a Sistemas de Datos
 ## Contenido Bonus
