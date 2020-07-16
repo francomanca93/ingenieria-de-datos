@@ -32,6 +32,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
   - [Realizar solicitudes HTTP con Python](#Realizar-solicitudes-HTTP-con-Python)
   - [¿Cómo trabajar con un documento HTML?](#¿Cómo-trabajar-con-un-documento-HTML?)
   - [Analizando un sitio web para encontrar las directivas a utilizar al hacer un web scrapping](#Analizando-un-sitio-web-para-encontrar-las-directivas-a-utilizar-al-hacer-un-web-scrapping)
+  - [Solicitudes a la web: Requests](#Solicitudes-a-la-web:-Requests)
 - [Pandas](#Pandas)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
 - [Contenido Bonus](#Contenido-Bonus)
@@ -318,6 +319,14 @@ Para manipularlo podemos usar los selectores CSS con `soup.select()`
 ### Analizando un sitio web para encontrar las directivas a utilizar al hacer un web scrapping
 
 Para poder desarrollar scrapers debemos entender los datos semi estructurados dados por el HTML para determinar qué tipo de selectores CSS necesitamos para sacar información.
+
+### Solicitudes a la web: Requests
+
+Un buen **Data engineer** utiliza los conceptos de la ingeniería de software para poder desarrollar sus programa. En nuestro caso para poder desarrollar nos apoyaremos de un patrón.
+
+**Page Object Patter**: Es un patrón que consiste en esconder los _queries_ especificos que se utilizan para manipular un documento HTML detrás de un objeto que representa la página web.
+
+Si estos _queries_ se añaden directamente al código principal, el código se vuelve frágil y va a depender mucho de la modificación que hagan a la web otras personas y arreglarlo se vuelve muy complicado.
 
 ## Pandas
 ## Intro a Sistemas de Datos
