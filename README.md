@@ -31,6 +31,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
   - [Introducción a las tecnologías web](#Introducción-a-las-tecnologías-web)
   - [Realizar solicitudes HTTP con Python](#Realizar-solicitudes-HTTP-con-Python)
   - [¿Cómo trabajar con un documento HTML?](#¿Cómo-trabajar-con-un-documento-HTML?)
+  - [Analizando un sitio web para encontrar las directivas a utilizar al hacer un web scrapping](#Analizando-un-sitio-web-para-encontrar-las-directivas-a-utilizar-al-hacer-un-web-scrapping)
 - [Pandas](#Pandas)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
 - [Contenido Bonus](#Contenido-Bonus)
@@ -314,6 +315,9 @@ Para manipularlo podemos usar los selectores CSS con `soup.select()`
 
 [Script de extracción de datos en un documento HTML]()
 
+### Analizando un sitio web para encontrar las directivas a utilizar al hacer un web scrapping
+
+Para poder desarrollar scrapers debemos entender los datos semi estructurados dados por el HTML para determinar qué tipo de selectores CSS necesitamos para sacar información.
 
 ## Pandas
 ## Intro a Sistemas de Datos
