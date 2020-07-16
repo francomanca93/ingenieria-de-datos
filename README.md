@@ -30,6 +30,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
 - [Web scraping](#Web-scraping)
   - [Introducción a las tecnologías web](#Introducción-a-las-tecnologías-web)
   - [Realizar solicitudes HTTP con Python](#Realizar-solicitudes-HTTP-con-Python)
+  - [¿Cómo trabajar con un documento HTML?](#¿Cómo-trabajar-con-un-documento-HTML?)
 - [Pandas](#Pandas)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
 - [Contenido Bonus](#Contenido-Bonus)
@@ -302,6 +303,17 @@ Estos códigos estan categorizados en los siguientes grupos:
 Todas las solicitudes HTTP tienen metadatos para que los diferentes sistemas y computadoras puedan entender de qué va la solicitud.
 
 [Script de solicitudes a la web]()
+
+### ¿Cómo trabajar con un documento HTML?
+
+En el caso de Python la librería estándar para manipular los documentos HTML se llama **BeautifulSoup**.
+
+**BeautifulSoup** nos ayuda a organizar gramaticalmente(parsear) el documento HTML para que tengamos una estructura con la cual podamos manejar y extraer información. BeautifulSoup convierte el string de HTML en un árbol de nodos para poder manipularlo.
+
+Para manipularlo podemos usar los selectores CSS con `soup.select()`
+
+[Script de extracción de datos en un documento HTML]()
+
 
 ## Pandas
 ## Intro a Sistemas de Datos
