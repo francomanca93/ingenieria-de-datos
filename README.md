@@ -33,6 +33,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
   - [¿Cómo trabajar con un documento HTML?](#¿Cómo-trabajar-con-un-documento-HTML?)
   - [Analizando un sitio web para encontrar las directivas a utilizar al hacer un web scrapping](#Analizando-un-sitio-web-para-encontrar-las-directivas-a-utilizar-al-hacer-un-web-scrapping)
   - [Solicitudes a la web: Requests](#Solicitudes-a-la-web:-Requests)
+  - [Implementando nuestro web scrapper: Configuración](#Implementando-nuestro-web-scrapper:-Configuración)
 - [Pandas](#Pandas)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
 - [Contenido Bonus](#Contenido-Bonus)
@@ -327,6 +328,22 @@ Un buen **Data engineer** utiliza los conceptos de la ingeniería de software pa
 **Page Object Patter**: Es un patrón que consiste en esconder los _queries_ especificos que se utilizan para manipular un documento HTML detrás de un objeto que representa la página web.
 
 Si estos _queries_ se añaden directamente al código principal, el código se vuelve frágil y va a depender mucho de la modificación que hagan a la web otras personas y arreglarlo se vuelve muy complicado.
+
+### Implementando nuestro web scrapper: Configuración
+
+Se crearán tres archivos para configurar el esqueleto del proyecto web scraper
+
+- [config.yaml](): El siguiente archivo contendra la configuración y datos necesarios para screapear web sitios web que coloquemos en este.
+
+  Los YAML es un formato para guardar objetos de datos con estructura de árbol. Sirven como archivos para configuración similares a json. La librería que usaremos para trabajar con estos es [pyyaml](https://pyyaml.org/wiki/PyYAMLDocumentation)
+
+  [Un poco mas sobre YAML](https://fercontreras.com/conoce-que-es-un-yaml-e18e9d21ade4)
+
+- [common.py](): Archivo .py para guardar funciones comunes que se utilizarán
+- [main.py](): Archivo principal con el cual se hará interacción con la linea de comando. En el se llamará a otras clases, metodos y/o archivos. Se agregarán algunas librerias/módulos para poder:
+  - Trabajar con la linea de comando. El módulo [argparse](https://rico-schmidt.name/pymotw-3/logging/index.html) sirve para análisis de opciones y argumentos de línea de comando.
+  - Ver de una forma más amigable mensajes en la linea de comando. El módulo [logging](https://rico-schmidt.name/pymotw-3/logging/index.html) sirve para hacer informes de estados, error y mensajes informativos. 
+
 
 ## Pandas
 ## Intro a Sistemas de Datos
