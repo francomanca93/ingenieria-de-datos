@@ -3,16 +3,24 @@ news_sites:
     url: https://www.eluniversal.com.mx
     queries:
       homepage_article_links: '.field-content a'
+      article_body: '.field-name-body'
+      article_title: '.pane-content h1'
   elpais:
     url: https://elpais.com
     queries:
       homepage_article_links: '.headline a'
+      article_body: '.article_body'
+      article_title: '.article_header h1'
   clarin: 
     url: https://clarin.com
     queries:
       homepage_article_links: '.content-nota a'
+      article_body: '.body-nota'
+      article_title: '.title h1'
   platzi: 
     url: https://platzi.com
     queries:
       homepage_article_links: '.RecentCourses-item a'
+      article_body: '.Hero-course-description span'
+      article_title: '.RecentCourses-content h3'
   
