@@ -2,6 +2,7 @@ import argparse  #  Libreria estandar para análisis de opciones y argumentos de
 import logging  # Libreria estandar para informe de estado, error y mensajes informativos
 logging.basicConfig(level=logging.INFO)
 
+import news_page_objects as news
 from common import config
 
 
@@ -12,6 +13,10 @@ def _news_scraper(news_site):
     host = config()['news_sites'][news_site]['url']
 
     logging.info('Beginning scraper for {}'.format(host))
+    homepage = news.HomePage(news_site, host)
+
+    for link in homepage.article_links:
+        print(link)
 
 
 if __name__ == '__main__':
