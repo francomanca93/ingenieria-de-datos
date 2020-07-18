@@ -1,5 +1,18 @@
 news_sites:
   eluniversal:
     url: https://www.eluniversal.com.mx
+    queries:
+      homepage_article_links: '.field-content a'
   elpais:
     url: https://elpais.com
+    queries:
+      homepage_article_links: '.headline a'
+  clarin: 
+    url: https://clarin.com
+    queries:
+      homepage_article_links: '.content-nota a'
+  platzi: 
+    url: https://platzi.com
+    queries:
+      homepage_article_links: '.RecentCourses-item a'
+  
