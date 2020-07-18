@@ -34,6 +34,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
   - [Analizando un sitio web para encontrar las directivas a utilizar al hacer un web scrapping](#Analizando-un-sitio-web-para-encontrar-las-directivas-a-utilizar-al-hacer-un-web-scrapping)
   - [Solicitudes a la web: Requests](#Solicitudes-a-la-web:-Requests)
   - [Implementando nuestro web scrapper: Configuración](#Implementando-nuestro-web-scrapper:-Configuración)
+  - [Implementando nuestro web scrapper: Obteniendo enlaces del front page](#Implementando-nuestro-web-scrapper:-Obteniendo-enlaces-del-front-page)
 - [Pandas](#Pandas)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
 - [Contenido Bonus](#Contenido-Bonus)
@@ -343,6 +344,22 @@ Se crearán tres archivos para configurar el esqueleto del proyecto web scraper
 - [main.py](): Archivo principal con el cual se hará interacción con la linea de comando. En el se llamará a otras clases, metodos y/o archivos. Se agregarán algunas librerias/módulos para poder:
   - Trabajar con la linea de comando. El módulo [argparse](https://rico-schmidt.name/pymotw-3/logging/index.html) sirve para análisis de opciones y argumentos de línea de comando.
   - Ver de una forma más amigable mensajes en la linea de comando. El módulo [logging](https://rico-schmidt.name/pymotw-3/logging/index.html) sirve para hacer informes de estados, error y mensajes informativos. 
+
+### Implementando nuestro web scrapper: Obteniendo enlaces del front page
+
+En esta sección lo que se hará es ir a la pagina principal a través de BeautifulSoup y luego identificar todos los vinculos que nos llevaran a los articulos de noticia principales.
+
+- Se agrega el archivo [news_page_objects.py](): Este tiene una clase HomePage que va a representar la página principal de nuestra web. Tiene métodos para:
+  - Obtener los links principales de la web a consultar.
+  - Obtener informacion de config.yaml.
+  - Parsear el html de la url que pasemos.
+
+Para realizar una **request/response (solicitd/respuesta) http** se utilizará el módulo [requests](https://requests.readthedocs.io/es/latest/).
+
+Para realizar perseado de una página web se utiliza BeautifulSoup. Mas información sobre la librería en el siguiente [link](https://code.tutsplus.com/es/tutorials/scraping-webpages-in-python-with-beautiful-soup-the-basics--cms-28211)
+
+- Se instancio de la clase HomePage el objeto homepage para luego imprimir links principales.
+- Se agregarón nuevas paginas para parsear y queries a selectores html. 
 
 
 ## Pandas
