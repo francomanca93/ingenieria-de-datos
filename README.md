@@ -39,6 +39,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
   - [Obtención de datos del Artículo](#Obtención-de-datos-del-Artículo)
   - [Persistiendo la información \"scrapeada\"](#Persistiendo-la-información-\"scrapeada\")
 - [Pandas](#Pandas)
+  - [Introducción a Pandas](#Introducción-a-Pandas)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
 - [Contenido Bonus](#Contenido-Bonus)
 
@@ -406,6 +407,24 @@ Lo que hacemos en esta sección es agregar la función:
 
 
 ## Pandas
+
+### Introducción a Pandas
+
+[**Pandas**](https://pandas.pydata.org/) nos otorga diversas facilidades para el **Data Wrangler** (““domados de datos””). Nos otorga dos estructuras de datos:
+
+- **Series**: Es un array unidimensional que representa una columna.
+- **DataFrame**: Es un conjunto de series que forman una tabla. Se pueden acceder a través de indices como una etiqueta(label) o pueden ser posicionales es decir 0 o índice 100. También pueden ser **rangos** o slices
+
+Estas estructuras de datos **no son** contenedores de datos. En Pandas las utilizamos para: 
+- Transformar y enriquecer nuestros datos.
+- Manipular nuestros datos.
+- Manejar los datos faltantes.
+- Realizar operaciones aritméticas.
+- Combinar diferentes dataframes en uno solo para obtener una nueva tabla.
+- etc.
+
+[**Pandas Cheat Sheet**](https://s3.amazonaws.com/assets.datacamp.com/blog_assets/PandasPythonForDataScience.pdf)
+
 ## Intro a Sistemas de Datos
 ## Contenido Bonus
 
