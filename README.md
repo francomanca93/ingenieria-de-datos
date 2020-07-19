@@ -35,6 +35,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
   - [Solicitudes a la web: Requests](#Solicitudes-a-la-web:-Requests)
   - [Implementando nuestro web scrapper: Configuración](#Implementando-nuestro-web-scrapper:-Configuración)
   - [Implementando nuestro web scrapper: Obteniendo enlaces del front page](#Implementando-nuestro-web-scrapper:-Obteniendo-enlaces-del-front-page)
+  - [Implementando nuestro web scrapper: Obteniendo artículos](#Implementando-nuestro-web-scrapper:-Obteniendo-artículos)
 - [Pandas](#Pandas)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
 - [Contenido Bonus](#Contenido-Bonus)
@@ -361,6 +362,19 @@ Para realizar perseado de una página web se utiliza BeautifulSoup. Mas informac
 - Se instancio de la clase HomePage el objeto homepage para luego imprimir links principales.
 - Se agregarón nuevas paginas para parsear y queries a selectores html. 
 
+### Implementando nuestro web scrapper: Obteniendo artículos
+
+Lo que se hará en esta sección es crear clases que representen a una página genérica y luego de esta heredarán nuestra Pagina principal y la página del artículo. 
+
+Se agregarán nuevas clases en el archivo [news_page_objects.py]()
+- `NewsPage()`: Clase que va a representar a nuestra web. Esta tiene los siguientes métodos
+    - `_select`: Funcion para obtener informacion de config.yaml.
+    - `_visit`: Función para parsear el html de la url que pasemos.
+- `HomePage(NewsPage)`: Clase que va a representar la página principal de nuestra web. Hereda de NesPage(). Tiene un método principal.
+    - `article_links`: Método para obtener los links principales de la web a consultar.
+- `ArticlePage(NewsPage)`: Clase que va a representar un artículo de la web. Tiene dos métodos principales:
+    - `body`: Método para seleccionar el cuerpo del artículo.
+    - `title`: Método para seleccionar el título del artículo.
 
 ## Pandas
 ## Intro a Sistemas de Datos
