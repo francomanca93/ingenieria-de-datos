@@ -37,6 +37,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
   - [Implementando nuestro web scrapper: Obteniendo enlaces del front page](#Implementando-nuestro-web-scrapper:-Obteniendo-enlaces-del-front-page)
   - [Implementando nuestro web scrapper: Obteniendo artículos](#Implementando-nuestro-web-scrapper:-Obteniendo-artículos)
   - [Obtención de datos del Artículo](#Obtención-de-datos-del-Artículo)
+  - [Persistiendo la información \"scrapeada\"](#Persistiendo-la-información-\"scrapeada\")
 - [Pandas](#Pandas)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
 - [Contenido Bonus](#Contenido-Bonus)
@@ -395,6 +396,13 @@ Se utilizará la libreria [**re**](https://docs.python.org/3/library/re.html#mod
     - Utilizaremos dos objetos con un patron diferentes para detectar enlaces. **^** Indica que empieza la expresión regular
       - is_well_formed_link = re.compile(r'^https?://.+/.+$')  # https://example.com/hello
       - is_root_path = re.compile(r'^/.+$')  # /some-text
+
+### Persistiendo la información \"scrapeada\"
+
+La persistencia de información se trata de guardar en un archivo los datos que estamos minando de la web para luego manipularlos. 
+
+Lo que hacemos en esta sección es agregar la función:
+- `_save_article`: Función para guarda en un csv el body de articulos screapeados.
 
 
 ## Pandas
