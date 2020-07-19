@@ -36,6 +36,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
   - [Implementando nuestro web scrapper: Configuración](#Implementando-nuestro-web-scrapper:-Configuración)
   - [Implementando nuestro web scrapper: Obteniendo enlaces del front page](#Implementando-nuestro-web-scrapper:-Obteniendo-enlaces-del-front-page)
   - [Implementando nuestro web scrapper: Obteniendo artículos](#Implementando-nuestro-web-scrapper:-Obteniendo-artículos)
+  - [Obtención de datos del Artículo](#Obtención-de-datos-del-Artículo)
 - [Pandas](#Pandas)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
 - [Contenido Bonus](#Contenido-Bonus)
@@ -375,6 +376,26 @@ Se agregarán nuevas clases en el archivo [news_page_objects.py]()
 - `ArticlePage(NewsPage)`: Clase que va a representar un artículo de la web. Tiene dos métodos principales:
     - `body`: Método para seleccionar el cuerpo del artículo.
     - `title`: Método para seleccionar el título del artículo.
+
+### Obtención de datos del Artículo
+Hecha la abstraccion con las clases correspondientes para poder obtener los datos de un articulo de una pagina, lo que se hará es validar que los vinculos se encuentran en el formato correcto o convertirlo.
+Luego se visitará cada pagina y se consultará el título y el cuerpo para ir armando el datasets.
+
+Se recorrerá cada una de las url del homepage para saber si existe un articulo o no. Los viculos vienen de diversas formas:
+- Completos y bien formados.
+- Vinculos relativos
+- Vinculos relativos a la raiz de la url
+
+Se utilizará la libreria [**re**](https://docs.python.org/3/library/re.html#module-contents). Este nos permite generar expresiones regulares en Python para poder determinar cual de los vinculos es válido o no, y asi poder obtener toda la informacion.
+
+- En main inicializamos a nuestro objeto articlePage
+- Crearemos las siguientes funciones en [main.py]()
+  - `_fetch_article`: Función para buscar un artículo.
+  - `_build_link`: Función que nos permitirá crear un link perfecto al cual podamos acceder. Crear un patron de expresion regulares para poder implementar la funcion
+    - Utilizaremos dos objetos con un patron diferentes para detectar enlaces. **^** Indica que empieza la expresión regular
+      - is_well_formed_link = re.compile(r'^https?://.+/.+$')  # https://example.com/hello
+      - is_root_path = re.compile(r'^/.+$')  # /some-text
+
 
 ## Pandas
 ## Intro a Sistemas de Datos
