@@ -37,9 +37,29 @@ def _news_scraper(news_site):
         if article:
             logger.info('Article ferched!!')
             articles.append(article)
-            print(article.title)
-    
-    print(len(articles))
+
+    _save_article(news_site, articles)
+
+
+def _save_article(news_site, articles):
+    ''' Función para guarda en un csv body de articulos screapeados.
+    - @param news_site: Sitio que vamos a scrapear
+    - @param articles: Lista de articulos
+    - @return: Retorna un archivo csv como dataset
+    '''
+    now = datetime.datetime.now().strftime("%Y_%m_%d")
+    out_file_name = '{news_site}_{datetime}_articles.csv'.format(
+        news_site=news_site,
+        datetime=now)
+    csv_headers = list(filter(lambda property: not property.startswith('_'), dir(articles[0])))
+
+    with open (out_file_name, mode='w+') as f:
+        writer = csv.writer(f)
+        writer.writerow(csv_headers)
+
+        for article in articles:
+            row = [str(getattr(article, prop)) for prop in csv_headers]
+            writer.writerow(row)
 
 
 def _fetch_article(news_site, host, link):
