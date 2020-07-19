@@ -1,21 +1,30 @@
+# Librerias estadar
 import argparse  #  Libreria estandar para análisis de opciones y argumentos de línea de comando
+import csv
+import datetime
 import logging  # Libreria estandar para informe de estado, error y mensajes informativos
-logging.basicConfig(level=logging.INFO)
 import re  # Módulo de expresiones regulares (re = regular expression)
 
+# Librerias para exceptions
 from requests.exceptions import HTTPError
 from urllib3.exceptions import MaxRetryError
 
+# Módulos própios
 import news_page_objects as news
 import common
 
-
+# Objetos para informes por consola.
+logging.basicConfig(level=logging.INFO)  # Configuración básica de logging
 logger = logging.getLogger(__name__)
+
+# Objetos para guardar expresiones regulares 
 is_well_formed_link = re.compile(r'^https?://.+/.+$')  # https://example.com/hello
 is_root_path = re.compile(r'^/.+$')  # /some-text
 
 
 def _news_scraper(news_site):
+    ''' Función para hacer un scraper a una pagina web sobre noticias.
+    @param news_site: Sitio que queremos buscar según los que tengamos en config.yaml'''
     host = common.config()['news_sites'][news_site]['url']
 
     logging.info('Beginning scraper for {}'.format(host))
