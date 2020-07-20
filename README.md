@@ -41,6 +41,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
 - [Pandas](#Pandas)
   - [Introducción a Pandas](#Introducción-a-Pandas)
   - [Estructura de datos - Series](#Estructura-de-datos---Series)
+  - [Estructura de datos - DataFrames](#Estructura-de-datos---DataFrames)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
 - [Contenido Bonus](#Contenido-Bonus)
 
@@ -437,6 +438,15 @@ En Python tenemos la filosofía del Duck Typing, si se ve como un pato y hace cu
 Una mejor aproximación para inicializar Series es utilizar diccionarios.
 
 [Documentación oficial Pandas: Series](https://pandas.pydata.org/pandas-docs/stable/reference/series.html)
+
+### Estructura de datos - DataFrames
+
+**DataFrames** son simplemente una tabla donde las filas y las columnas tienen etiquetas, se puede construir de diferentes formas pero siempre debemos considerar que la estructura que necesitamos construir para inicializarla tiene que ser bidimensional. Una matriz y puede ser una lista de listas, lista de tuplas, un diccionario de Python u otro **DataFrame**.
+
+Si solo tenemos una dimensión a eso no le llamamos **DataFrame**, le llamamos Serie. Cuando utilizamos un diccionario las llaves se convierten en las llaves de la columna.
+
+[Documentación oficial Pandas: DataFrame](https://pandas.pydata.org/pandas-docs/stable/reference/frame.html)
+
 
 ## Intro a Sistemas de Datos
 ## Contenido Bonus
