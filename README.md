@@ -32,10 +32,10 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
   - [Realizar solicitudes HTTP con Python](#Realizar-solicitudes-HTTP-con-Python)
   - [¿Cómo trabajar con un documento HTML?](#¿Cómo-trabajar-con-un-documento-HTML?)
   - [Analizando un sitio web para encontrar las directivas a utilizar al hacer un web scrapping](#Analizando-un-sitio-web-para-encontrar-las-directivas-a-utilizar-al-hacer-un-web-scrapping)
-  - [Solicitudes a la web: Requests](#Solicitudes-a-la-web:-Requests)
-  - [Implementando nuestro web scrapper: Configuración](#Implementando-nuestro-web-scrapper:-Configuración)
-  - [Implementando nuestro web scrapper: Obteniendo enlaces del front page](#Implementando-nuestro-web-scrapper:-Obteniendo-enlaces-del-front-page)
-  - [Implementando nuestro web scrapper: Obteniendo artículos](#Implementando-nuestro-web-scrapper:-Obteniendo-artículos)
+  - [Solicitudes a la web - Requests](#Solicitudes-a-la-web---Requests)
+  - [Implementando nuestro web scrapper - Configuración](#Implementando-nuestro-web-scrapper---Configuración)
+  - [Implementando nuestro web scrapper - Obteniendo enlaces del front page](#Implementando-nuestro-web-scrapper---Obteniendo-enlaces-del-front-page)
+  - [Implementando nuestro web scrapper - Obteniendo artículos](#Implementando-nuestro-web-scrapper---Obteniendo-artículos)
   - [Obtención de datos del Artículo](#Obtención-de-datos-del-Artículo)
   - [Persistiendo la información \"scrapeada\"](#Persistiendo-la-información-\"scrapeada\")
 - [Pandas](#Pandas)
@@ -310,7 +310,7 @@ Estos códigos estan categorizados en los siguientes grupos:
 
 Todas las solicitudes HTTP tienen metadatos para que los diferentes sistemas y computadoras puedan entender de qué va la solicitud.
 
-[Script de solicitudes a la web]()
+[Script de solicitudes a la web](https://github.com/francomanca93/ingenieria-de-datos/blob/master/practicas/solicitud-extraccion-info-html.ipynb)
 
 ### ¿Cómo trabajar con un documento HTML?
 
@@ -320,13 +320,13 @@ En el caso de Python la librería estándar para manipular los documentos HTML s
 
 Para manipularlo podemos usar los selectores CSS con `soup.select()`
 
-[Script de extracción de datos en un documento HTML]()
+[Script de extracción de datos en un documento HTML](https://github.com/francomanca93/ingenieria-de-datos/blob/master/practicas/solicitud-extraccion-info-html.ipynb)
 
 ### Analizando un sitio web para encontrar las directivas a utilizar al hacer un web scrapping
 
 Para poder desarrollar scrapers debemos entender los datos semi estructurados dados por el HTML para determinar qué tipo de selectores CSS necesitamos para sacar información.
 
-### Solicitudes a la web: Requests
+### Solicitudes a la web - Requests
 
 Un buen **Data engineer** utiliza los conceptos de la ingeniería de software para poder desarrollar sus programa. En nuestro caso para poder desarrollar nos apoyaremos de un patrón.
 
@@ -334,26 +334,26 @@ Un buen **Data engineer** utiliza los conceptos de la ingeniería de software pa
 
 Si estos _queries_ se añaden directamente al código principal, el código se vuelve frágil y va a depender mucho de la modificación que hagan a la web otras personas y arreglarlo se vuelve muy complicado.
 
-### Implementando nuestro web scrapper: Configuración
+### Implementando nuestro web scrapper - Configuración
 
 Se crearán tres archivos para configurar el esqueleto del proyecto web scraper
 
-- [config.yaml](): El siguiente archivo contendra la configuración y datos necesarios para screapear web sitios web que coloquemos en este.
+- [config.yaml](https://github.com/francomanca93/ingenieria-de-datos/commits/master/web-scrapper/config.yaml): El siguiente archivo contendra la configuración y datos necesarios para screapear web sitios web que coloquemos en este.
 
   Los YAML es un formato para guardar objetos de datos con estructura de árbol. Sirven como archivos para configuración similares a json. La librería que usaremos para trabajar con estos es [pyyaml](https://pyyaml.org/wiki/PyYAMLDocumentation)
 
   [Un poco mas sobre YAML](https://fercontreras.com/conoce-que-es-un-yaml-e18e9d21ade4)
 
-- [common.py](): Archivo .py para guardar funciones comunes que se utilizarán
-- [main.py](): Archivo principal con el cual se hará interacción con la linea de comando. En el se llamará a otras clases, metodos y/o archivos. Se agregarán algunas librerias/módulos para poder:
+- [common.py](https://github.com/francomanca93/ingenieria-de-datos/commits/master/web-scrapper/common.py): Archivo .py para guardar funciones comunes que se utilizarán
+- [main.py](https://github.com/francomanca93/ingenieria-de-datos/commits/master/web-scrapper/main.py): Archivo principal con el cual se hará interacción con la linea de comando. En el se llamará a otras clases, metodos y/o archivos. Se agregarán algunas librerias/módulos para poder:
   - Trabajar con la linea de comando. El módulo [argparse](https://rico-schmidt.name/pymotw-3/logging/index.html) sirve para análisis de opciones y argumentos de línea de comando.
   - Ver de una forma más amigable mensajes en la linea de comando. El módulo [logging](https://rico-schmidt.name/pymotw-3/logging/index.html) sirve para hacer informes de estados, error y mensajes informativos. 
 
-### Implementando nuestro web scrapper: Obteniendo enlaces del front page
+### Implementando nuestro web scrapper - Obteniendo enlaces del front page
 
 En esta sección lo que se hará es ir a la pagina principal a través de BeautifulSoup y luego identificar todos los vinculos que nos llevaran a los articulos de noticia principales.
 
-- Se agrega el archivo [news_page_objects.py](): Este tiene una clase HomePage que va a representar la página principal de nuestra web. Tiene métodos para:
+- Se agrega el archivo [news_page_objects.py](https://github.com/francomanca93/ingenieria-de-datos/commit/30d5fb0df0606e11b43a6bad32c25518403c9a2e#diff-17475357362c0f9e134381cd0e104388): Este tiene una clase HomePage que va a representar la página principal de nuestra web. Tiene métodos para:
   - Obtener los links principales de la web a consultar.
   - Obtener informacion de config.yaml.
   - Parsear el html de la url que pasemos.
@@ -365,11 +365,11 @@ Para realizar perseado de una página web se utiliza BeautifulSoup. Mas informac
 - Se instancio de la clase HomePage el objeto homepage para luego imprimir links principales.
 - Se agregarón nuevas paginas para parsear y queries a selectores html. 
 
-### Implementando nuestro web scrapper: Obteniendo artículos
+### Implementando nuestro web scrapper - Obteniendo artículos
 
 Lo que se hará en esta sección es crear clases que representen a una página genérica y luego de esta heredarán nuestra Pagina principal y la página del artículo. 
 
-Se agregarán nuevas clases en el archivo [news_page_objects.py]()
+Se agregarán nuevas clases en el archivo [news_page_objects.py](https://github.com/francomanca93/ingenieria-de-datos/commit/c4840816707527a56302b64da9bb5e0c2a18bd83#diff-17475357362c0f9e134381cd0e104388)
 - `NewsPage()`: Clase que va a representar a nuestra web. Esta tiene los siguientes métodos
     - `_select`: Funcion para obtener informacion de config.yaml.
     - `_visit`: Función para parsear el html de la url que pasemos.
@@ -391,7 +391,7 @@ Se recorrerá cada una de las url del homepage para saber si existe un articulo 
 Se utilizará la libreria [**re**](https://docs.python.org/3/library/re.html#module-contents). Este nos permite generar expresiones regulares en Python para poder determinar cual de los vinculos es válido o no, y asi poder obtener toda la informacion.
 
 - En main inicializamos a nuestro objeto articlePage
-- Crearemos las siguientes funciones en [main.py]()
+- Crearemos las siguientes funciones en [main.py](https://github.com/francomanca93/ingenieria-de-datos/commit/c1eb14e5ace4710f55bf1502bcfc5773757950d1#diff-c85a2c3c9e83e1b7b251b7905cf347e2)
   - `_fetch_article`: Función para buscar un artículo.
   - `_build_link`: Función que nos permitirá crear un link perfecto al cual podamos acceder. Crear un patron de expresion regulares para poder implementar la funcion
     - Utilizaremos dos objetos con un patron diferentes para detectar enlaces. **^** Indica que empieza la expresión regular
@@ -402,7 +402,7 @@ Se utilizará la libreria [**re**](https://docs.python.org/3/library/re.html#mod
 
 La persistencia de información se trata de guardar en un archivo los datos que estamos minando de la web para luego manipularlos. 
 
-Lo que hacemos en esta sección es agregar la función:
+Lo que hacemos en esta sección es agregar la siguiente función en [main.py](https://github.com/francomanca93/ingenieria-de-datos/commit/f760d915473181e0f579a1773f9948d45e34ae50#diff-c85a2c3c9e83e1b7b251b7905cf347e2):
 - `_save_article`: Función para guarda en un csv el body de articulos screapeados.
 
 
