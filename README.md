@@ -43,6 +43,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
   - [Estructura de datos - Series](#Estructura-de-datos---Series)
   - [Estructura de datos - DataFrames](#Estructura-de-datos---DataFrames)
   - [Índices y selección](#Índices-y-selección)
+  - [Data wrangling con Pandas](#Data-wrangling-con-Pandas)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
 - [Contenido Bonus](#Contenido-Bonus)
 
@@ -474,6 +475,21 @@ df.loc[:,:]
 
 Existe una gran diferencia en la forma en la que utilizamos estos slices porque varia de la forma tradicional de Python. loc va a incluir el final del que necesitamos.
 
+### Data wrangling con Pandas
+
+**Data wrangling** es una de las actividades más importantes de todos los profesionales de datos. Simplemente es limpiar, transformar y enriquecer el dataset para objetivos posteriores.
+
+Pandas es una de las herramientas más poderosas para realizar este ““domado”” de datos. Recordemos que Pandas trae muchas de sus abstracciones del lenguaje R, pero nos otorga lo mejor de ambos mundos, por eso es tan popular.
+
+Nos permite:
+
+- generar transformaciones con gran facilidad.
+- trabajar rápidamente con datasets grandes
+- detectar y reemplazar faltantes
+- agrupar y resumir nuestros datos
+- visualizar nuestros resultados.
+
+> NOTA: Pandas tiene sus limites. Cuando el dataset es demasiado grande (millones de registros) es mejor usar otra herramienta llamada [**Pyspark**](https://spark.apache.org/docs/latest/api/python/index.html) que es una librería de py para trabajar con [**Apache Spark**](https://spark.apache.org/). La ventaja de esta es que permite un procesamiento distribuido y rápido (trabaja en memoria). Esta herramienta es muy común cuando trabajas con un Clúster y no tienes tantas limitaciones de recursos para tus procesos (Memoria y CPU).
 
 ## Intro a Sistemas de Datos
 ## Contenido Bonus
