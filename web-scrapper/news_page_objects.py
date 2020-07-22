@@ -15,6 +15,7 @@ class NewsPage():
         self._config = config()['news_sites'][news_site]
         self._queries = self._config['queries']
         self._html = None  # Pagina parseada con bs4
+        self._url = url
 
         self._visit(url)
 
@@ -67,7 +68,14 @@ class ArticlePage(NewsPage):
     '''
     def __init__(self, news_site, url):
         super().__init__(news_site, url)
-    
+
+    @property
+    def url(self):
+        ''' Método para leer y agregar el link del artículo. 
+        El mismo es leido y utilizado en la variable csv_headers (Line 55 - main.py) '''
+        result = self._url
+        return result
+
     @property
     def body(self):
         ''' Método para seleccionar el cuerpo del artículo'''
