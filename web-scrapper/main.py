@@ -8,6 +8,7 @@ import re  # Módulo de expresiones regulares (re = regular expression)
 # Librerias para exceptions
 from requests.exceptions import HTTPError
 from urllib3.exceptions import MaxRetryError
+import socket
 
 # Módulos própios
 import news_page_objects as news
@@ -72,7 +73,7 @@ def _fetch_article(news_site, host, link):
     article = None
     try:
         article = news.ArticlePage(news_site, _build_link(host, link))
-    except(HTTPError, MaxRetryError) as e:
+    except(HTTPError, MaxRetryError, socket.error) as e:
         logger.warning('Error while fetching the article', exc_info=False)
 
     if article and not article.body:

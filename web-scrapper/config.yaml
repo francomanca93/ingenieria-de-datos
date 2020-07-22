@@ -22,5 +22,5 @@ news_sites:
     queries:
       homepage_article_links: '.RecentCourses-item a'
       article_body: '.Hero-course-description span'
-      article_title: '.RecentCourses-content h3'
+      article_title: '.Hero-course-info h1'
   
