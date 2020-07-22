@@ -42,6 +42,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
   - [Introducción a Pandas](#Introducción-a-Pandas)
   - [Estructura de datos - Series](#Estructura-de-datos---Series)
   - [Estructura de datos - DataFrames](#Estructura-de-datos---DataFrames)
+  - [Índices y selección](#Índices-y-selección)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
 - [Contenido Bonus](#Contenido-Bonus)
 
@@ -446,6 +447,32 @@ Una mejor aproximación para inicializar Series es utilizar diccionarios.
 Si solo tenemos una dimensión a eso no le llamamos **DataFrame**, le llamamos Serie. Cuando utilizamos un diccionario las llaves se convierten en las llaves de la columna.
 
 [Documentación oficial Pandas: DataFrame](https://pandas.pydata.org/pandas-docs/stable/reference/frame.html)
+
+### Índices y selección
+
+Existen muchas formas de manipular los DataFrames y de seleccionar los elementos que queremos transformar.
+
+Como diccionarios - Dictionary like:
+```py
+df['col1'] 
+df[['col1', 'col3']]
+```
+Como Numpy - Numpy like:
+
+iloc = index location
+```py
+df.iloc[:]
+df.iloc[:,:]
+```
+Basado en etiquetas - Label based:
+
+loc = location
+```py
+df.loc[:]
+df.loc[:,:]
+```
+
+Existe una gran diferencia en la forma en la que utilizamos estos slices porque varia de la forma tradicional de Python. loc va a incluir el final del que necesitamos.
 
 
 ## Intro a Sistemas de Datos
