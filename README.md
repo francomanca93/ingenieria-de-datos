@@ -44,6 +44,8 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
   - [Estructura de datos - DataFrames](#Estructura-de-datos---DataFrames)
   - [Índices y selección](#Índices-y-selección)
   - [Data wrangling con Pandas](#Data-wrangling-con-Pandas)
+  - [Creación de la receta](#Creación-de-la-receta)
+    - [Preparando la automatización](#Preparando-la-automatización)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
 - [Contenido Bonus](#Contenido-Bonus)
 
@@ -416,7 +418,7 @@ Lo que hacemos en esta sección es agregar la siguiente función en [main.py](ht
 
 [**Pandas**](https://pandas.pydata.org/) nos otorga diversas facilidades para el **Data Wrangler** (““domados de datos””). Nos otorga dos estructuras de datos:
 
-- **Series**: Es un array unidimensional que representa una columna.
+- **Seriesimport**: Es un array unidimensional que representa una columna.
 - **DataFrame**: Es un conjunto de series que forman una tabla. Se pueden acceder a través de indices como una etiqueta(label) o pueden ser posicionales es decir 0 o índice 100. También pueden ser **rangos** o slices
 
 Estas estructuras de datos **no son** contenedores de datos. En Pandas las utilizamos para: 
@@ -490,6 +492,30 @@ Nos permite:
 - visualizar nuestros resultados.
 
 > NOTA: Pandas tiene sus limites. Cuando el dataset es demasiado grande (millones de registros) es mejor usar otra herramienta llamada [**Pyspark**](https://spark.apache.org/docs/latest/api/python/index.html) que es una librería de py para trabajar con [**Apache Spark**](https://spark.apache.org/). La ventaja de esta es que permite un procesamiento distribuido y rápido (trabaja en memoria). Esta herramienta es muy común cuando trabajas con un Clúster y no tienes tantas limitaciones de recursos para tus procesos (Memoria y CPU).
+
+### Creación de la receta
+
+Unos de las diferencias entre un **Data Scientist** y un **Data Engineer** es la aproximación que tiene hacia la fase de transformación de datos. Ambos utilizan Jupiter Notebook para poder saber como son lo datos, familiarizarnos con ellos, poder entender donde hay datos vacios, etc. En el caso de un Data Engineer, esto debe automatizarse.
+
+Para poder **realizar una automatización** lo hacemos con recetas, es decir **scripts**. Estos script con las tranformaciones especificas paso a paso de las transformaciones que se les hará a un datasets. Con este script podemos hacer el mismo procedimiento de limpiado de datos con un número de datasets que tengan datos similares. En este caso se podrá utilizar para cualquier sitio de noticias que se haya scrapeado. 
+
+#### Preparando la automatización
+
+Se creó un archivo. Este se llama [newspaper_receipe.py]().
+
+Las librerias a utilizar son:
+- argparse
+- logging
+- urllib.parse
+- pandas
+
+Tendrá 5 funciones iniciales:
+- **main**: Función principal que trabajará con las funciones secundarias y que se utilizará en el entry point.
+- **_read_data**: Función que para leera el archivo.
+- **_extract_newspaper_uid**: Función para extraer id del dataset.
+- **_add_newspaper_uid_column**: Funcion para agregar comlumna newspaper_uid.
+- **_extract_host**: Función para agregar una columna adicional que representa el host de donde se obtiene la noticia.
+
 
 ## Intro a Sistemas de Datos
 ## Contenido Bonus
