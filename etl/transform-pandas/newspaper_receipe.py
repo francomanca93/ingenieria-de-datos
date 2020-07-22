@@ -1,0 +1,130 @@
+# Librerias estandar
+import argparse
+import logging
+logging.basicConfig(level=logging.INFO)
+from urllib.parse import urlparse
+
+# Librerias externas
+import pandas as pd
+
+
+logger = logging.getLogger(__name__)
+
+
+def main(filename):
+    '''Función principal que trabajará con las funciones secundarias y que se utilizará en el entry point.
+    
+    Parameters
+    -------
+    - filename : str (path)
+        Path del dataset en csv
+    
+    Returns
+    -------
+    - df : dataframe
+        Retorna un dataframe
+
+    '''
+    logger.info('Starting cleaning process')
+
+    df = _read_data(filename)
+    newspaper_uid = _extract_newspaper_uid(filename)
+    df = _add_newspaper_uid_column(df, newspaper_uid)
+    df = _extract_host(df)
+
+    return df
+
+
+def _read_data(filename):
+    '''Función que para leera el archivo.
+    
+    Parameters
+    ---------
+    - filename : str 
+        Nombre del archivo que vamos a utilizar
+    
+    Returns
+    -------
+    - pd.read_csv(filename) : dataframe
+        Lectura del archivo. Devuelve un dataframe.
+    '''
+    
+    logger.info('Reading file {}'.format(filename))
+
+    return pd.read_csv(filename)
+
+
+def _extract_newspaper_uid(filename):
+    '''Función para extraer id del dataset. 
+    Primera parte del nombre del archivo.
+    
+    Parameters
+    ------- 
+    - filename : str 
+        Nombre del archivo al cual se le extraerá el newspaper_uid
+
+    Returns
+    -------
+    - newspaper_uid : str
+        Id que se colocará en la columna para identificación proveniente de datos.
+    '''
+    
+    logger.info('Extracting newspaper_uid')
+    newspaper_uid = filename.split('_')[0]
+
+    logger.info('Newspaper uid detected: {}'.format(newspaper_uid))
+    return newspaper_uid
+
+
+def _add_newspaper_uid_column(df, newspaper_uid):
+    '''Funcion para agregar comlumna newspaper_uid. 
+    Con esta columna identificamos de que dataset vienen nuestros datos.
+    
+    Parameters
+    ---------
+    - df : dataframe
+        Recibe dataset para trabajar con él.
+    - newspaper_uid : str
+        Nueva columna con el id del dataset.
+    
+    Return 
+    ------
+    - df : dataframe 
+        Retorna el dataset con una nueva columna.
+    '''
+
+    logger.info('Filling newspaper_uid column with {}'.format(newspaper_uid))
+    df['newspaper_uid'] = newspaper_uid
+
+    return df
+
+
+def _extract_host(df):
+    '''Función para agregar una columna adicional que representa el host de donde se obtiene la noticia.
+    
+    Parameters
+    ----------
+    - df : dataframe
+        Recibe el dataset para poder agregarle al mismo una columna.
+    
+    Return 
+    -------
+    - df : dataframe
+        Devuelve el dataset con una columna adicional.
+    '''
+    logger.info('Extracting host from urls')
+    df['host'] = df['url'].apply(lambda url: urlparse(url).netloc)
+
+    return df
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('filename',
+                        help='The path to the dirty data',
+                        type=str)
+    
+    args = parser.parse_args()
+
+    df = main(args.filename)
+    print(df)
