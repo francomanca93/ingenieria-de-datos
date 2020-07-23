@@ -3,14 +3,17 @@ brotlipy==0.7.0
 certifi==2020.6.20
 cffi==1.14.0
 chardet==3.0.4
+click==7.1.2
 cryptography==2.9.2
 cycler==0.10.0
 idna @ file:///tmp/build/80754af9/idna_1593446292537/work
+joblib @ file:///tmp/build/80754af9/joblib_1594236160679/work
 kiwisolver==1.2.0
 matplotlib @ file:///tmp/build/80754af9/matplotlib-base_1592846008246/work
 mkl-fft==1.1.0
 mkl-random==1.1.1
 mkl-service==2.3.0
+nltk @ file:///tmp/build/80754af9/nltk_1592496090529/work
 numpy==1.18.5
 pandas @ file:///tmp/build/80754af9/pandas_1592841659173/work
 py @ file:///tmp/build/80754af9/py_1593446248552/work
@@ -21,9 +24,11 @@ PySocks==1.7.1
 python-dateutil==2.8.1
 pytz==2020.1
 PyYAML==5.3.1
+regex @ file:///tmp/build/80754af9/regex_1593435547652/work
 requests @ file:///tmp/build/80754af9/requests_1592841827918/work
 sip==4.19.13
 six==1.15.0
 soupsieve==2.0.1
 tornado==6.0.4
+tqdm @ file:///tmp/build/80754af9/tqdm_1593446365756/work
 urllib3==1.25.9
