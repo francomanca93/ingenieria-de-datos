@@ -7,7 +7,9 @@ from urllib.parse import urlparse
 
 # Librerias externas
 import pandas as pd
+import nltk
 
+from nltk.corpus import stopwords
 
 logger = logging.getLogger(__name__)
 
@@ -35,6 +37,8 @@ def main(filename):
     df = _fill_missing_titles(df)
     df = _generate_uid_for_rows(df)
     df = _remove_new_lines_from_body(df)
+    df = _tokenize_columns(df, 'title')
+    df = _tokenize_columns(df, 'body')
 
     return df
 
@@ -198,6 +202,39 @@ def _remove_new_lines_from_body(df):
     return df
 
 
+def _tokenize_columns(df, column_name):
+    '''Función para tokenizar columna del datasets que nosotros le pasemos.
+    
+    Parameters
+    ----------
+    - df : dataframe
+        Recibe el dataset.
+    - column_name : str
+        Nombre de la columna que vamos a tokenizar
+    
+    Return 
+    -------
+    - df : dataframe
+        Devuelve el dataset con la column_name modificada. 
+    '''
+    logger.info('Tokenizing {} column'.format(column_name))
+
+    stop_words = set(stopwords.words('spanish'))  # Seteamos las stop words como español
+
+    tokenize_column = (df
+                        #.dropna()
+                        .apply(lambda row: nltk.word_tokenize(row[column_name]), axis=1)
+                        .apply(lambda tokens: list(filter(lambda token: token.isalpha(), tokens)))
+                        .apply(lambda tokens: list(map(lambda token: token.lower(), tokens)))
+                        .apply(lambda word_list: list(filter(lambda word: word not in stop_words, word_list)))
+                        .apply(lambda valid_word_list: len(valid_word_list))
+                      )
+
+    df['n_token_{}'.format(column_name)] = tokenize_column
+
+    return df
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('filename',
@@ -208,3 +245,5 @@ if __name__ == '__main__':
 
     df = main(args.filename)
     print(df)
+    print(df['n_token_title'])
+    print(df['n_token_body'])
