@@ -46,6 +46,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
   - [Data wrangling con Pandas](#Data-wrangling-con-Pandas)
   - [Creación de la receta](#Creación-de-la-receta)
     - [Preparando la automatización](#Preparando-la-automatización)
+  - [¿Cómo trabajar con datos faltantes?](#¿Cómo-trabajar-con-datos-faltantes?)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
 - [Contenido Bonus](#Contenido-Bonus)
 
@@ -516,6 +517,19 @@ Tendrá 5 funciones iniciales:
 - **_add_newspaper_uid_column**: Funcion para agregar comlumna newspaper_uid.
 - **_extract_host**: Función para agregar una columna adicional que representa el host de donde se obtiene la noticia.
 
+### ¿Cómo trabajar con datos faltantes?
+
+Los datos faltantes representan un verdadero problema sobre todo cuando estamos realizando agregaciones. Imagina que tenemos datos faltantes y los llenamos con 0, pero eso haría que la distribución de datos se modificaría radicalmente. Podemos eliminar los registros, pero la fuerza de nuestras conclusiones se debilita.
+
+Pandas nos otorga varias funcionalidades para identificarlas y para trabajar con ellas. Existe el concepto que se llama **NaN**, cuando existe un dato faltante simplemente se rellena con un **NaN** y en ese momento podemos preguntar cuáles son los datos faltantes con .isna().
+
+- **.notna()**: para preguntar dónde hay datos completos.
+- **.dropna()**: para eliminar el registro.
+
+Para reemplazar:
+
+- **.fillna()** donde le damos un dato centinela
+- **.ffill()** donde utiliza el último valor.
 
 ## Intro a Sistemas de Datos
 ## Contenido Bonus
