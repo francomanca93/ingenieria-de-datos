@@ -48,6 +48,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
     - [Preparando la automatización](#Preparando-la-automatización)
   - [¿Cómo trabajar con datos faltantes?](#¿Cómo-trabajar-con-datos-faltantes?)
   - [Operaciones con Series y DataFrames](#Operaciones-con-Series-y-DataFrames)
+  - [Limpiando detalles adicionales](#Limpiando-detalles-adicionales)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
 - [Contenido Bonus](#Contenido-Bonus)
 
@@ -539,6 +540,46 @@ Se creará una función para rellenar titulos vacios llamada `_fill_missing_titl
 - En esta se buscarán datos faltantes en en la columna title con `.isna()`.
 - Sabiendo que en el título lo podemos encontrar en el enlace, utilizamos expresiones regulares para identificarlo en la **url** y lo extraemos. Identificamos patrones, espacios y guiones y lo extraemos limpiamente.
 - Finalmente indexando el dataframe en la columna title y en los indices específicos.
+
+### Limpiando detalles adicionales
+Se harán dos cambios adicionales
+
+1. Añadir uid a las filas (uid = identificador único)
+- Utilizaremos la libreria `hashlib` dentro de libreria estandar, para operaciones criptograficas. Esta nos generará un numero unico para poder identificar a nuestra fila.
+- Luego a nuestro dataset 
+  - Utilizamos una función lambda para cada fila generamos una hash. La función md5 nos da un numero de 128 bytes. Lo codificamos en utf-8 gracias a la función .encode(). 
+  - El hash object obtenido anteriormente lo conventimos en un numero hexadecimal.
+- Añadimos el hash generado al dataframe
+- Luego lo utilizamos para que este sea nuestro indice.
+
+```py
+import hashlib  
+
+uids = (data_set
+            .apply(lambda row: hashlib.md5(bytes(row['url'].encode())), axis=1)
+            .apply(lambda hash_object: hash_object.hexdigest()) 
+        )
+
+data_set['uid'] = uids  
+data_set.set_index('uid', inplace=True)
+
+data_set # PARA VER EL DATASET MODIFICADO
+```
+2. Eliminamos los saltos de línea de nuestros ariculos contenidos en la columna body
+- Aplicamos una modificacion a cada una de las filas. La forma de obtener estas filas es diciendo que el axis=1.
+- Seleccionamos la columna body y convertimos cada fila en una lista de letras.
+- Por cada letra en la lista de una fila del body reemplazamos en esta los saltos de lineas por espacios. Esto lo convertimos en un map para que podamos pasarle la lista con la que trabajará. Convertimos el objeto map entregado por la funcion map en un objeto lista.
+- Unimos las letras de cada lista para que obtener finalmente un string por fila
+
+```py
+stripped_body = (data_set
+                    .apply(lambda row: row['body'], axis=1)
+                    .apply(lambda body: list(body))
+                    .apply(lambda letters: list(map(lambda letters: letters.replace('\n', ''), letters))) 
+                    .apply(lambda letters: ''.join(letters))
+                )
+stripped_body
+```
 
 ## Intro a Sistemas de Datos
 ## Contenido Bonus
