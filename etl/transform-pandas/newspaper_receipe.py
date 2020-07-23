@@ -1,5 +1,6 @@
 # Librerias estandar
 import argparse
+import hashlib
 import logging
 logging.basicConfig(level=logging.INFO)
 from urllib.parse import urlparse
@@ -32,6 +33,8 @@ def main(filename):
     df = _add_newspaper_uid_column(df, newspaper_uid)
     df = _extract_host(df)
     df = _fill_missing_titles(df)
+    df = _generate_uid_for_rows(df)
+    df = _remove_new_lines_from_body(df)
 
     return df
 
@@ -142,6 +145,55 @@ def _fill_missing_titles(df):
                       )
 
     df.loc[missing_titles_mask, 'title'] = missing_titles.loc[:, 'missing_titles']
+
+    return df
+
+
+def _generate_uid_for_rows(df):
+    '''Función para generar uid para cada fila.
+    
+    Parameters
+    ----------
+    - df : dataframe
+        Recibe el dataset.
+    
+    Return 
+    -------
+    - df : dataframe
+        Devuelve el dataset con una columna adicional seteando la columna uid como identificador unico de la fila
+    '''
+    logger.info('Generating uid for each rows')
+    uids = (df
+            .apply(lambda row: hashlib.md5(bytes(row['url'].encode('utf-8'))), axis=1)
+            .apply(lambda hash_object: hash_object.hexdigest())
+            )
+    df['uid'] = uids
+
+    return df.set_index('uid')
+
+
+def _remove_new_lines_from_body(df):
+    '''Función para remover saltos de lineas de los articulos en la columna body
+    
+    Parameters
+    ----------
+    - df : dataframe
+        Recibe el dataset.
+    
+    Return 
+    -------
+    - df : dataframe
+        Devuelve el dataset con los articulos de la columna body modificada. 
+    '''
+    logger.info('Remove new lines from body')
+
+    stripped_body = (df
+                     .apply(lambda row: row['body'], axis=1)
+                     .apply(lambda body: list(body))
+                     .apply(lambda letters: list(map(lambda letter: letter.replace('\n', ' '), letters)))
+                     .apply(lambda letters: ''.join(letters))
+                    )
+    df['body'] = stripped_body
 
     return df
 
