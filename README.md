@@ -49,6 +49,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
   - [¿Cómo trabajar con datos faltantes?](#¿Cómo-trabajar-con-datos-faltantes?)
   - [Operaciones con Series y DataFrames](#Operaciones-con-Series-y-DataFrames)
   - [Limpiando detalles adicionales](#Limpiando-detalles-adicionales)
+  - [Limpiando detalles en nuestro proyecto](#Limpiando-detalles-en-nuestro-proyecto)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
 - [Contenido Bonus](#Contenido-Bonus)
 
@@ -580,6 +581,12 @@ stripped_body = (data_set
                 )
 stripped_body
 ```
+### Limpiando detalles en nuestro proyecto
+
+La sección anterior fue realizada en **jupyter notebook**. Luego de hacer pruebas y encontrar los patrones se aplican los cambios al **proyecto etl**, especificamente al script para automatizar el proceso. Sabiendo esto se agregarán dos funciones implementando los datalles anterior: 
+- **_generate_uid_for_rows**: Función para generar uid para cada fila.
+- **_remove_new_lines_from_body**: Función para remover saltos de lineas de los articulos en la columna body.
+
 
 ## Intro a Sistemas de Datos
 ## Contenido Bonus
