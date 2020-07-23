@@ -47,6 +47,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
   - [Creación de la receta](#Creación-de-la-receta)
     - [Preparando la automatización](#Preparando-la-automatización)
   - [¿Cómo trabajar con datos faltantes?](#¿Cómo-trabajar-con-datos-faltantes?)
+  - [Operaciones con Series y DataFrames](#Operaciones-con-Series-y-DataFrames)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
 - [Contenido Bonus](#Contenido-Bonus)
 
@@ -530,6 +531,14 @@ Para reemplazar:
 
 - **.fillna()** donde le damos un dato centinela
 - **.ffill()** donde utiliza el último valor.
+
+### Operaciones con Series y DataFrames
+
+Se creará una función para rellenar titulos vacios llamada `_fill_missing_titles`.
+
+- En esta se buscarán datos faltantes en en la columna title con `.isna()`.
+- Sabiendo que en el título lo podemos encontrar en el enlace, utilizamos expresiones regulares para identificarlo en la **url** y lo extraemos. Identificamos patrones, espacios y guiones y lo extraemos limpiamente.
+- Finalmente indexando el dataframe en la columna title y en los indices específicos.
 
 ## Intro a Sistemas de Datos
 ## Contenido Bonus
