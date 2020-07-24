@@ -39,6 +39,8 @@ def main(filename):
     df = _remove_new_lines_from_body(df)
     df = _tokenize_columns(df, 'title')
     df = _tokenize_columns(df, 'body')
+    df = _remove_duplicate_entries(df, 'title')
+    df = _drop_rows_with_missing_values(df)
 
     return df
 
@@ -233,6 +235,44 @@ def _tokenize_columns(df, column_name):
     df['n_token_{}'.format(column_name)] = tokenize_column
 
     return df
+
+
+def _remove_duplicate_entries(df, column_name):
+    '''Función para remover filas del datasets duplicadas.
+    
+    Parameters
+    ----------
+    - df : dataframe
+        Recibe el dataset.
+    - column_name : str
+        Nombre de la columna que vamos a analizar, respecto a valores duplicados
+    
+    Return 
+    -------
+    - df : dataframe
+        Devuelve el dataset con sin valores duplicados. 
+    '''
+    logger.info('Removing duplicate entries')
+    df.drop_duplicates(subset=[column_name], keep='first', inplace=True)
+
+    return df
+
+
+def _drop_rows_with_missing_values(df):
+    '''Función para remover filas del datasets con valores vacios.
+    
+    Parameters
+    ----------
+    - df : dataframe
+        Recibe el dataset.
+
+    Return 
+    -------
+    - df.dropna() : dataframe
+        Devuelve el dataset con sin valores vacios. 
+    '''
+    logger.info('Dropping rows with missing values')
+    return df.dropna()
 
 
 if __name__ == '__main__':
