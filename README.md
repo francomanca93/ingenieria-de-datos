@@ -50,7 +50,10 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
   - [Operaciones con Series y DataFrames](#Operaciones-con-Series-y-DataFrames)
   - [Limpiando detalles adicionales](#Limpiando-detalles-adicionales)
   - [Limpiando detalles en nuestro proyecto](#Limpiando-detalles-en-nuestro-proyecto)
-  -[Enriquecimiento de los datos](#Enriquecimiento-de-los-datos)
+  - [Enriquecimiento de los datos](#Enriquecimiento-de-los-datos)
+  - [Valores duplicados](#Valores-duplicados)
+    - [En Jupyter](#En-Jupyter)
+    - [En Python](#En-Python)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
 - [Contenido Bonus](#Contenido-Bonus)
 
@@ -626,6 +629,15 @@ def tokenize_columns(df, column_name):
                 .apply(lambda valid_word_list: len(valid_word_list))
             )
 ```
+### Valores duplicados 
+
+#### En Jupyter
+
+Estos valores duplicados es importantes identificarlos y removerlos de nuestro datasets para que esos valores no generen un peso no justificado dentro del análisis a realizar dentro de nuestro Pipelines.
+
+Pandas nos otorga la función `drop_duplicates` para eliminar estos valores duplicados.
+
+#### En Python
 
 ## Intro a Sistemas de Datos
 ## Contenido Bonus
