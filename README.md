@@ -54,6 +54,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
   - [Valores duplicados](#Valores-duplicados)
     - [En Jupyter](#En-Jupyter)
     - [En Python](#En-Python)
+  - [Guardando dataset](#Guardando-dataset)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
 - [Contenido Bonus](#Contenido-Bonus)
 
@@ -642,6 +643,11 @@ Pandas nos otorga la función `drop_duplicates` para eliminar estos valores dupl
 Se crearón dos funciones en el proyecto para eliminar valores duplicados y filas con valores vacios. Estas se llaman: 
 - **_remove_duplicate_entries**: Función para remover filas del datasets duplicadas.
 - **_drop_rows_with_missing_values**: Función para remover filas del datasets con valores vacios.
+
+### Guardando dataset
+
+En esta sección se creará una función para guardar el data set limpio despues de haber hecho todo el trabajo anterior. La función se llamará:
+- **_save_data**: Función para guardar el dataset limpio.
 
 ## Intro a Sistemas de Datos
 ## Contenido Bonus
