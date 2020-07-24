@@ -4,6 +4,7 @@ import hashlib
 import logging
 logging.basicConfig(level=logging.INFO)
 from urllib.parse import urlparse
+import re
 
 # Librerias externas
 import pandas as pd
@@ -41,7 +42,7 @@ def main(filename):
     df = _tokenize_columns(df, 'body')
     df = _remove_duplicate_entries(df, 'title')
     df = _drop_rows_with_missing_values(df)
-
+    _save_data(df, filename)
     return df
 
 
@@ -273,6 +274,23 @@ def _drop_rows_with_missing_values(df):
     '''
     logger.info('Dropping rows with missing values')
     return df.dropna()
+
+
+def _save_data(df, filename):
+    '''Función para guardar el dataset limpio.
+    
+    Parameters
+    ----------
+    - df : dataframe
+        Recibe el dataset.
+    - filename : str
+        Nombre del archivo
+    '''
+    patron = re.compile(r'(?P<missing_titles>[^/]+)$')  # Compilar nuestra expresion regular en un objeto de patrones de Python
+    filename_clean = str(patron.findall(filename)[0]) # findall(): Encuentra todos los subtextos donde haya una coincidencia y nos devuelve estas coincidencias como una lista. Seleccionamos el elemento 0.
+    clean_filename = 'clean_{}'.format(filename_clean)
+    logger.info('Saving data at location {}'.format(filename))
+    df.to_csv(clean_filename)
 
 
 if __name__ == '__main__':
