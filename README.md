@@ -55,6 +55,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
     - [En Jupyter](#En-Jupyter)
     - [En Python](#En-Python)
   - [Guardando dataset](#Guardando-dataset)
+  - [Visualización de datos](#Visualización-de-datos)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
 - [Contenido Bonus](#Contenido-Bonus)
 
@@ -648,6 +649,99 @@ Se crearón dos funciones en el proyecto para eliminar valores duplicados y fila
 
 En esta sección se creará una función para guardar el data set limpio despues de haber hecho todo el trabajo anterior. La función se llamará:
 - **_save_data**: Función para guardar el dataset limpio.
+
+### Visualización de datos
+
+Lo que harémos en esta sección es un análisis descriptivo de los datasets. 
+1. Leemos los data sets
+
+`pd.read_csv(ruta/del/dataset)`
+
+2. Hacemos una descripción rápida de las variables cuantitativas con la función `.describe()`. Con esta podemos ver los valores estadisticos más comunes.
+
+<div align="center"> 
+  <table>
+    <tr>
+    <td><img src="readme_img/clarin-describe.png" width=""></td>
+    <td><img src="readme_img/elpais-describe.png" width=""></td>
+    <td><img src="readme_img/eluniversal-describe.png" width=""></td>
+    </tr>
+  </table>
+</div>
+
+3. Con la función `%matplotlib inline` podremos ver los gráficos sin importar el módulo matplotlib
+
+4. Graficamos y sacamos conclusiones.
+
+- Con la linea `nombre_dataset['nombre_columna_para_analisis'].plot(style='k.')` podemos analizar la columna `nombre_columna_para_analisis` del data set `nombre_dataset` y sacar nuestras conclusiones. 
+<div align="center"> 
+  <table>
+    <tr>
+    <td><img src="readme_img/plot-title-tokens.png" width=""></td>
+    </tr>
+  </table>
+</div>
+
+De este gráfico podemos concluir que la cantidad de palabras significativas de los títulos para el periodico **el pais** y **el universal** son similares, en cambio, para **clarín** suelen usar mas palabras para un titulo. Estas van entre **7 y 10 tokens**, palabras sigficativas. Para **el pais** y **el universal** las palabras significativas del titulos van entre **4 y 7 tokens**.
+
+<div align="center"> 
+  <table>
+    <tr>
+    <td><img src="readme_img/plot-body-tokens.png" width=""></td>
+    </tr>
+  </table>
+</div>
+
+De este gráfico podemos concluir que la cantidad de palabras significativas del body para para el periodico **el pais** y **clarín** son similares, en cambio, para **el universal** suelen usar menos palabras para el artículo. Estas van entre **250 y 600 tokens**, palabras sigficativas. Para **el universal** las palabras significativas de los artículos van entre **50 y 250 tokens**.
+
+Con esto podemos sacar una conclusión respecto a los periodicos. **El universal** tiene una politica editorial de generar artículos pequeños, seguramente para rápida lectura.  El **clarín** y **el pais** tienen una política contraria, donde se enfocan en artículos de mayor extensión. Tal vez con mayor contenido informativo. 
+
+Código para plotear histogramas.
+```py
+# Lo que hacemos juntar todos los datasets en uno
+all_newspapers = pd.concat([clean_eluniversal, clean_elpais, clean_clarin])
+
+# Los agrupamos por el newspaper_uid
+grouped = all_newspapers.groupby('newspaper_uid')
+
+# Graficamos histogramas.
+grouped.hist()
+```
+
+<div align="center"> 
+  <table>
+    <tr>
+    <td><img src="readme_img/clarin-histograma.png" width="">
+    <p align="center">Histograma de Clarín</p></td>
+  </table>
+</div>
+
+<div align="center"> 
+  <table>
+    <tr>
+    <td><img src="readme_img/elpais-histograma.png" width="">
+    <p align="center">Histograma de El País</p></td>
+  </table>
+</div>
+
+<div align="center"> 
+  <table>
+    <tr>
+    <td><img src="readme_img/eluniversal-histograma.png" width="">
+    <p align="center">Histograma de El Universal</p></td>
+    </tr>
+  </table>
+</div>
+
+<div align="center"> 
+  <table>
+    <tr>
+    <td><img src="readme_img/datos-estadisticos-periodicos.png
+" width=""></td>
+    </tr>
+  </table>
+</div>
+
 
 ## Intro a Sistemas de Datos
 ## Contenido Bonus
