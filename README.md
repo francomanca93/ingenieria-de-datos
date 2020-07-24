@@ -50,6 +50,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
   - [Operaciones con Series y DataFrames](#Operaciones-con-Series-y-DataFrames)
   - [Limpiando detalles adicionales](#Limpiando-detalles-adicionales)
   - [Limpiando detalles en nuestro proyecto](#Limpiando-detalles-en-nuestro-proyecto)
+  -[Enriquecimiento de los datos](#Enriquecimiento-de-los-datos)
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
 - [Contenido Bonus](#Contenido-Bonus)
 
@@ -587,6 +588,44 @@ La sección anterior fue realizada en **jupyter notebook**. Luego de hacer prueb
 - **_generate_uid_for_rows**: Función para generar uid para cada fila.
 - **_remove_new_lines_from_body**: Función para remover saltos de lineas de los articulos en la columna body.
 
+### Enriquecimiento de los datos
+
+Podemos enriquecer nuestra tabla con información adicional, un poco de información numérica para realizar análisis posterior.
+
+Usaremos [`nltk`](https://www.nltk.org/) es una librería dentro del stack de Ciencia de Datos de Python que nos va a permitir tokenizar, separar palabras dentro del título y nos permitirá contar la frecuencia de cuántas palabras existen en nuestro título y body.
+
+#### Trabajando en el proyecto
+Lo que se hará es tokenizar el título y el body. Utilizaremos la librería `nltk`. De esta librería debemos tener en cuenta:
+- Importar el módulo `stopwords`, ya que hay palabras que no nos sirven o aportan valor significativo a una oración. Con este módulo las podemos identificar.
+
+La librería `nltk` es muy extensa y solo se nos instalan los módulos principales. Para poder trabajar necesitamos descargar los siguientes módulos adicionales si no los tenemos.
+
+En nuestro entorno virtual, ingresamos a la consola de python, importamos la librería nltk y luego ingresamos los siguientes comandos:
+- `$ nltk.download('punkt')`: Libreria para tokenizar, es decir dividir en palabras.
+- `$ nltk.download('stopwords')`: Para las palabras que no nos sirven o aportan valor significativo a una oración.
+
+Luego crearemos una función para tokenizar las columnas que le pasemos, **tokenize_columns**. Lo que haremos con esta es:
+
+- Eliminar todas las celdas que tengan NaN.
+- De la librería **nltk** aplicamos la función **work_tokenize** a cada fila, pasando como parámetro el nombre de la columna.
+- Eliminar todas las palabras que no sean alfanuméricas. Generamos un filtro y le decimos que sólo queremos las palabras que sean alfanumerica con la funcion `.isalpha()` y le pasamos la lista. La función `filter()` devuelve un objeto, por lo tanto debemos convertirlo en un objeto lista.
+- Convertir todos los tokens a lower case para que se puedan comparar con posterioridad.
+- Eliminar las palabras **stopwords**. Filtraremos todas aquellas palabras que no sean stop words y le pasamos una lista con todas las palabras. La función `filter()` devuelve un objeto, por lo tanto debemos convertirlo en un objeto lista.
+- No queremos una lista de palabras, lo que queremos es saber la cantidad de palabras validas, por lo tanto las contaremos.
+
+Todo el procedimiento anterior debe ser agregado en una nueva columna del dataset.
+
+```py
+def tokenize_columns(df, column_name):
+    return (df
+                .dropna()
+                .apply(lambda row: nltk.word_tokenize(row[column_name]), axis=1)
+                .apply(lambda tokens: list(filter(lambda token: token.isalpha(), tokens)))
+                .apply(lambda tokens: list(map(lambda token: token.lower(), tokens)))
+                .apply(lambda word_list: list(filter(lambda word: word not in stop_words, word_list)))
+                .apply(lambda valid_word_list: len(valid_word_list))
+            )
+```
 
 ## Intro a Sistemas de Datos
 ## Contenido Bonus
