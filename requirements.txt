@@ -29,6 +29,7 @@ requests @ file:///tmp/build/80754af9/requests_1592841827918/work
 sip==4.19.13
 six==1.15.0
 soupsieve==2.0.1
+SQLAlchemy @ file:///tmp/build/80754af9/sqlalchemy_1593446299926/work
 tornado==6.0.4
 tqdm @ file:///tmp/build/80754af9/tqdm_1593446365756/work
 urllib3==1.25.9
