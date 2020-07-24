@@ -84,7 +84,7 @@ def _extract_newspaper_uid(filename):
 
     patron = re.compile(r'(?P<missing_titles>[^/]+)$')
     filename_clean = str(patron.findall(filename)[0])
-    
+
     newspaper_uid = filename_clean.split('_')[0]
 
     logger.info('Newspaper uid detected: {}'.format(newspaper_uid))
@@ -306,6 +306,3 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     df = main(args.filename)
-    print(df)
-    print(df['n_token_title'])
-    print(df['n_token_body'])
