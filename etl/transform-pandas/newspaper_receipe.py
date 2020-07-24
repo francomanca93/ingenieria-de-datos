@@ -81,7 +81,11 @@ def _extract_newspaper_uid(filename):
     '''
     
     logger.info('Extracting newspaper_uid')
-    newspaper_uid = filename.split('_')[0]
+
+    patron = re.compile(r'(?P<missing_titles>[^/]+)$')
+    filename_clean = str(patron.findall(filename)[0])
+    
+    newspaper_uid = filename_clean.split('_')[0]
 
     logger.info('Newspaper uid detected: {}'.format(newspaper_uid))
     return newspaper_uid
