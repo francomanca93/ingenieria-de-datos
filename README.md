@@ -639,6 +639,10 @@ Pandas nos otorga la función `drop_duplicates` para eliminar estos valores dupl
 
 #### En Python
 
+Se crearón dos funciones en el proyecto para eliminar valores duplicados y filas con valores vacios. Estas se llaman: 
+- **_remove_duplicate_entries**: Función para remover filas del datasets duplicadas.
+- **_drop_rows_with_missing_values**: Función para remover filas del datasets con valores vacios.
+
 ## Intro a Sistemas de Datos
 ## Contenido Bonus
 
