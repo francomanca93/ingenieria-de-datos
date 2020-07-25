@@ -44,9 +44,17 @@ def _transform():
                         cwd='./transform')
 
 
-
 def _load():
-    pass
+    '''ETL: Función para automatizar la carga de datos.
+    
+    Contiene un for loop que nos lleva a través del procedimiento automatizado en consola 
+    para la ejecución de los archivos para cargar los de datos a una base de datos. '''
+
+    logger.info('Starting load process')
+    for news_site_uid in news_sites_uids:
+        clean_data_filename = '{}.csv'.format(news_site_uid)
+        subprocess.run(['python', 'main.py', clean_data_filename], cwd='./load')
+        subprocess.run(['rm', clean_data_filename], cwd='./load')
 
 
 if __name__ == '__main__':
