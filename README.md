@@ -59,6 +59,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
 - [Intro a Sistemas de Datos](#Intro-a-Sistemas-de-Datos)
   - [Introducción a los sistemas de datos](#Introducción-a-los-sistemas-de-datos)
     - [SQL vs NoSQL](#SQL-vs-NoSQL)
+  - [Cargando datos a SQLite](#Cargando-datos-a-SQLite)
 - [Contenido Bonus](#Contenido-Bonus)
 
 
@@ -773,6 +774,18 @@ La verdad es que para los profesionales en informática, especialmente los profe
     </tr>
   </table>
 </div>
+
+### Cargando datos a SQLite
+
+En esta sección se hará el procedimiento de carga de datos o load data. Para realizar tal proceso se creo 3 archivos.
+- **base.py**: Contiene los objetos que hacen a la base de datos.
+  - Contendrá la varible que creará el motor de base de datos.
+  - Enlace a una sesión individual al motor.
+  - Una clase base, a esta se le asignará una metaclase que produce los objetos apropiados de `~ sqlalchemy.schema.Table` y realiza las llamadas apropiadas de `~ sqlalchemy.orm.mapper` en función de la información proporcionada de forma declarativa en la clase y en cualquier subclase de esta. Esto gracias al constructor `declarative_base()` para definir clases declarativas.
+
+- **article.py**: Clase para estructurar los datos en una base de datos. Hereda de la **clase Base**
+- **main.py**: Función que interactua con las otras clases y la terminal.
+  - Tiene un funcón principal que nos permite crear el schema, tomar datos del csv y pasarlo a un .db
 
 ## Contenido Bonus
 
