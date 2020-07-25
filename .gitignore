@@ -4,3 +4,5 @@ mysql_table_example.png
 
 */__pycache__
 */*/__pycache__
+
+.vscode/
