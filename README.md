@@ -60,6 +60,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
   - [Introducción a los sistemas de datos](#Introducción-a-los-sistemas-de-datos)
     - [SQL vs NoSQL](#SQL-vs-NoSQL)
   - [Cargando datos a SQLite](#Cargando-datos-a-SQLite)
+- [ETL Pipeline - Automatización](#ETL-Pipeline---Automatización)
 - [Contenido Bonus](#Contenido-Bonus)
 
 
@@ -786,6 +787,26 @@ En esta sección se hará el procedimiento de carga de datos o load data. Para r
 - **article.py**: Clase para estructurar los datos en una base de datos. Hereda de la **clase Base**
 - **main.py**: Función que interactua con las otras clases y la terminal.
   - Tiene un funcón principal que nos permite crear el schema, tomar datos del csv y pasarlo a un .db
+
+## ETL Pipeline - Automatización
+
+En esta sección se realizó la automatización de todo el proceso ETL, utilizando los archivos generados. El proceso es el siguiente:
+- **Extract (Extracción)**: Lo que hicimos fue un web scrapper como extracción de datos. 
+- **Transform (Transformación)**. Transformamos los datos obtenidos en el web scrapper gracias a Pandas. 
+- **Load (Carga)**: Finalizando con la carga de datos a una base de datos local. Se utilizará SQLite como tal. 
+
+<div align="center"> 
+  <img src="readme_img/etl-pipeline.png" width="">
+</div>
+
+Los archivos creados en el proyecto son para manejarlos por consola. Lo que se hizo fue automatizar el proceso de abrir cada archivo por separado en un archivo **pipeline.py**. 
+- Se utilizó la librería `subprocess`, esta nos permite manipular directamente archivos de terminal.
+- Se crarán 5 funciones:
+  - **main()**: Función principal ETL.  
+  - **_extract()**: Función para automatizar extracción de datos.
+  - **_transform()**: Función para automatizar la tranformación de datos.
+  - **_load()**: Función para automatizar la carga de datos.
+  - **_to_databe_folder()**: Función para mover base de datos database folder.
 
 ## Contenido Bonus
 
