@@ -15,7 +15,17 @@ def main():
 
 
 def _extract():
-    pass
+    '''ETL: Función para automatizar extracción de datos.
+    
+    Contiene un for loop que nos lleva a través del procedimiento automatizado en consola 
+    para la ejecución de los archivos para la extracción de datos. '''
+
+    logger.info('Starting extract process')
+    for news_site_uid in news_sites_uids:
+        subprocess.run(['python', 'main.py', news_site_uid], cwd='./extract')
+        subprocess.run(['find', '.', '-name', '{}*'.format(news_site_uid),
+                       '-exec', 'mv', '{}', '../transform/{}_.csv'.format(news_site_uid),
+                       ';'], cwd='./extract')
 
 
 def _transform():
