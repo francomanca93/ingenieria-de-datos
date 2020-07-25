@@ -12,6 +12,7 @@ def main():
     _extract()
     _transform()
     _load()
+    _to_databe_folder()
 
 
 def _extract():
@@ -55,6 +56,15 @@ def _load():
         clean_data_filename = '{}.csv'.format(news_site_uid)
         subprocess.run(['python', 'main.py', clean_data_filename], cwd='./load')
         subprocess.run(['rm', clean_data_filename], cwd='./load')
+
+
+def _to_databe_folder():
+    '''ETL: Función para mover base de datos database folder.'''
+    
+    logger.info('Moving database to databe folder')
+    database_name = 'newspaper.db'
+    subprocess.run(['mv', database_name, '../database/{}'.format(database_name)],
+                    cwd='./load')
 
 
 if __name__ == '__main__':
