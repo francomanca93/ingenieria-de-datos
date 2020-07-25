@@ -29,7 +29,20 @@ def _extract():
 
 
 def _transform():
-    pass
+    '''ETL: Función para automatizar la tranformación de datos.
+    
+    Contiene un for loop que nos lleva a través del procedimiento automatizado en consola 
+    para la ejecución de los archivos para la transformación de datos. '''
+
+    logger.info('Starting transform process')
+    for news_site_uid in news_sites_uids:
+        dirty_data_filename = '{}_.csv'.format(news_site_uid)
+        clean_data_filename = 'clean_{}'.format(dirty_data_filename)
+        subprocess.run(['python', 'main.py', dirty_data_filename], cwd='./transform')
+        subprocess.run(['rm', dirty_data_filename], cwd='./transform')
+        subprocess.run(['mv', clean_data_filename, '../load/{}.csv'.format(news_site_uid)],
+                        cwd='./transform')
+
 
 
 def _load():
