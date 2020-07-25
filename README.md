@@ -62,6 +62,7 @@ El contenido de este documento son **apuntes teoricos** y un proyecto **Web Scra
   - [Cargando datos a SQLite](#Cargando-datos-a-SQLite)
 - [ETL Pipeline - Automatización](#ETL-Pipeline---Automatización)
 - [Contenido Bonus](#Contenido-Bonus)
+  - [Porque usar la nube](#Porque-usar-la-nube)
 
 
 ## Introducción
@@ -809,4 +810,24 @@ Los archivos creados en el proyecto son para manejarlos por consola. Lo que se h
   - **_to_databe_folder()**: Función para mover base de datos database folder.
 
 ## Contenido Bonus
+### Porque usar la nube
+
+La nube nos da un poder de cómputo casi inimaginable, nos permite procesar terabytes de datos en segundos. La nube se puede usar en dos grandes ocasiones: 
+- Cuando los datos ya no caben en tu computadora local.
+- Cuando el tiempo de procesamiento esta siendo muy extenso
+
+Es en ese momento donde deberías usar la nube.
+
+Si estas en un entorno de producción, si estas trabajando en una empresa y los datos de esa empresa ya viven en la nube, lo lógico es realizar el trabajo en la nube. Automatizar los scripts en ese mismo ambiente.
+
+Diversas nubes ya ofrecen paquetes completos para el ciclo de datos, como [**Google Cloud**](https://cloud.google.com/):
+
+- Dataflow
+- Pub/Sub
+- Cloud Storage
+- Datalab
+- BigQuery
+- Dataproc
+- Firestore
+
 
