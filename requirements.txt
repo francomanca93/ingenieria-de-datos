@@ -14,7 +14,7 @@ mkl-fft==1.1.0
 mkl-random==1.1.1
 mkl-service==2.3.0
 nltk @ file:///tmp/build/80754af9/nltk_1592496090529/work
-numpy==1.18.5
+numpy==1.22.0
 pandas @ file:///tmp/build/80754af9/pandas_1592841659173/work
 py @ file:///tmp/build/80754af9/py_1593446248552/work
 pycparser @ file:///tmp/build/80754af9/pycparser_1594388511720/work
